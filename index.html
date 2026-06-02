@@ -3,25 +3,30 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Dosely — Never Miss Your Medication Again</title>
-<meta name="description" content="Dosely is a smart medication reminder app. Stay on track with beautiful reminders, refill alerts, adherence tracking, and family sharing. Free to download."/>
+<title>Dosely | Medication Reminder & Family Care</title>
+<meta name="description" content="Dosely helps you manage medications, reminders, refill tracking and family care."/>
 <meta name="keywords" content="medication reminder app, medicine reminder, pill reminder, family medication tracker, medication adherence app, prescription tracker"/>
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#FF8A3D"/>
 
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/assets/dosely-logo.png"/>
+<link rel="apple-touch-icon" href="/assets/dosely-logo.png"/>
+<link rel="manifest" href="/manifest.json"/>
+
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://dosely.app/"/>
-<meta property="og:title" content="Dosely — Never Miss Your Medication Again"/>
-<meta property="og:description" content="Smart medication reminders, refill alerts, adherence tracking, and family sharing. All in one beautifully designed app."/>
-<meta property="og:image" content="assets/dosely-homescreen.jpg"/>
+<meta property="og:title" content="Dosely"/>
+<meta property="og:description" content="Medication Reminder & Family Care"/>
+<meta property="og:image" content="/assets/dosely-homescreen.jpg"/>
 <meta property="og:site_name" content="Dosely"/>
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Dosely — Never Miss Your Medication Again"/>
-<meta name="twitter:description" content="Smart medication reminders, refill alerts, adherence tracking, and family sharing. All in one beautifully designed app."/>
-<meta name="twitter:image" content="assets/dosely-homescreen.jpg"/>
+<meta name="twitter:title" content="Dosely | Medication Reminder & Family Care"/>
+<meta name="twitter:description" content="Dosely helps you manage medications, reminders, refill tracking and family care."/>
+<meta name="twitter:image" content="/assets/dosely-homescreen.jpg"/>
 
 <!-- Structured Data -->
 <script type="application/ld+json">
@@ -135,13 +140,13 @@ ul{list-style:none}
 /* ============================================================
    NAV
    ============================================================ */
-.nav{position:fixed;top:14px;left:0;right:0;z-index:500;display:flex;justify-content:center;pointer-events:none}
-.nav-inner{pointer-events:auto;display:flex;align-items:center;gap:6px;padding:7px 7px 7px 18px;background:rgba(255,252,248,.82);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow-soft);transition:box-shadow .3s}
+.nav{position:fixed;top:14px;left:0;right:0;z-index:500;display:flex;justify-content:center;pointer-events:none;padding:0 16px}
+.nav-inner{pointer-events:auto;display:flex;align-items:center;gap:6px;padding:7px 7px 7px 18px;background:rgba(255,252,248,.82);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow-soft);transition:box-shadow .3s;max-width:100%}
 .nav-inner:hover{box-shadow:0 2px 4px rgba(27,23,20,.06),0 16px 48px -12px rgba(242,106,27,.22)}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;letter-spacing:-.01em;padding-right:16px;border-right:1px solid var(--line);margin-right:4px}
-.brand-mark{width:30px;height:30px;border-radius:9px;background-image:url('assets/dosely-logo.png');background-size:cover;background-position:center;box-shadow:0 4px 10px rgba(242,106,27,.3)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;letter-spacing:-.01em;padding-right:16px;border-right:1px solid var(--line);margin-right:4px;white-space:nowrap}
+.brand-mark{width:30px;height:30px;border-radius:9px;background-image:url('assets/dosely-logo.png');background-size:cover;background-position:center;box-shadow:0 4px 10px rgba(242,106,27,.3);flex-shrink:0}
 .nav-links{display:flex;gap:2px}
-.nav-links a{padding:8px 14px;font-size:14px;color:var(--ink-2);border-radius:999px;transition:.2s;font-weight:500}
+.nav-links a{padding:8px 14px;font-size:14px;color:var(--ink-2);border-radius:999px;transition:.2s;font-weight:500;white-space:nowrap}
 .nav-links a:hover{background:var(--cream);color:var(--ink)}
 
 /* hamburger */
@@ -159,6 +164,10 @@ ul{list-style:none}
 @media(max-width:780px){
   .nav-links{display:none}
   .nav-menu-btn{display:flex}
+}
+@media(max-width:420px){
+  .nav .btn-pri{display:none}
+  .brand{border-right:none;padding-right:4px;margin-right:0}
 }
 
 /* ============================================================
