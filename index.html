@@ -724,6 +724,19 @@ section[id],[id="download"]{scroll-margin-top:88px}
 @media(max-width:480px){
   .store-badge img{height:46px}
 }
+
+/* ——— Nav: smooth transition for auto-hide on scroll ——— */
+.nav{transition:transform 0.38s cubic-bezier(0.2,0.8,0.2,1)}
+.nav.nav-hidden{transform:translateY(-90px)}
+
+/* ——— Nav: more compact on 430px viewports (logo + CTA + hamburger) ——— */
+@media(max-width:460px){
+  .nav{padding:0 10px}
+  .nav-inner{padding:5px 6px 5px 12px;gap:4px}
+  .brand{font-size:14px;gap:7px;padding-right:10px;margin-right:2px}
+  .brand-mark{width:26px;height:26px}
+  .nav .btn-pri{padding:8px 13px;font-size:13px;gap:6px}
+}
 </style>
 </head>
 <body>
@@ -1327,6 +1340,8 @@ function openMobileNav(){
   nav.classList.add('open');
   btn.setAttribute('aria-expanded','true');
   document.body.style.overflow = 'hidden';
+  // Always show pill nav when overlay opens
+  document.querySelector('.nav').classList.remove('nav-hidden');
 }
 function closeMobileNav(){
   const nav = document.getElementById('mobileNav');
@@ -1379,6 +1394,39 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
     } else {
       nav.style.boxShadow = '';
     }
+  },{passive:true});
+})();
+
+// Auto-hide nav on scroll down — reveal on scroll up (premium landing page behaviour)
+(function(){
+  const nav = document.querySelector('.nav');
+  let lastY = window.scrollY;
+  let hidden = false;
+  let ticking = false;
+
+  function update(){
+    const y = window.scrollY;
+    const mobileMenuOpen = document.getElementById('mobileNav').classList.contains('open');
+    if(mobileMenuOpen){ ticking = false; return; }
+
+    if(y < 80){
+      // At top of page — always visible
+      if(hidden){ nav.classList.remove('nav-hidden'); hidden = false; }
+    } else if(y > lastY + 3 && !hidden){
+      // Scrolling down — hide
+      nav.classList.add('nav-hidden');
+      hidden = true;
+    } else if(y < lastY - 3 && hidden){
+      // Scrolling up — reveal
+      nav.classList.remove('nav-hidden');
+      hidden = false;
+    }
+    lastY = y;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll',()=>{
+    if(!ticking){ requestAnimationFrame(update); ticking = true; }
   },{passive:true});
 })();
 </script>
